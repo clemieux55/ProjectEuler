@@ -24,13 +24,17 @@ class Fibonacci
 			get_sum_of_last_two_values_in_an_array
 			if @starting_terms.last > 4000000
 				@starting_terms.each do |n|
-					if n % 2 == 0
-						sum_of_evens = sum_of_evens + n
-					end
+					sum_of_the_even_numbers
 				end
 			end
 		end
 		puts sum_of_evens
+	end
+
+	def sum_of_the_even_numbers
+		if n % 2 == 0
+			sum_of_evens = sum_of_evens + n
+		end
 	end
 end
 
