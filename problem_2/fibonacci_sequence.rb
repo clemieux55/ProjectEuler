@@ -9,34 +9,27 @@ require 'pry'
 
 class Fibonacci
 
-	def initialize
-		@starting_terms = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+	def fibbonacci_sequence_collection
+		fibb_numbers = [1,2]
+		while fibb_numbers.last <= 4000000
+			fibb_numbers << fibb_numbers.last(2).inject{|sum,x| sum + x}
+		end
+		if fibb_numbers.last > 4000000
+			fibb_numbers.pop
+		end
+		addition_of_even_numbers(fibb_numbers)
 	end
 
-	def get_sum_of_last_two_values_in_an_array
-		values = @starting_terms.last(2)
-		@starting_terms.push(values[0] + values[1])
-	end
-
-	def values_can_not_exceed_4_million
-		sum_of_evens = 0
-		while @starting_terms.last < 4000001
-			get_sum_of_last_two_values_in_an_array
-			if @starting_terms.last > 4000000
-				@starting_terms.each do |n|
-					sum_of_the_even_numbers
-				end
+	private
+	def addition_of_even_numbers(numbers_array)
+			sum = 0
+			numbers_array.each do |number|
+			if number.even? 
+				sum += number
 			end
 		end
-		puts sum_of_evens
-	end
-
-	def sum_of_the_even_numbers
-		if n % 2 == 0
-			sum_of_evens = sum_of_evens + n
-		end
+		sum
 	end
 end
 
-fib = Fibonacci.new
-puts fib.values_can_not_exceed_4_million
+puts Fibonacci.new.fibbonacci_sequence_collection
